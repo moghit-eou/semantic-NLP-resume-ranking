@@ -7,14 +7,16 @@ def hello():
 
 
 
-@app.route('/adding' , methods=['GET'])
+@app.route('/adding' , methods=['POST' , 'GET'])
 def check():
-    name = request.args.get('argument')
-    
-    print("----",name )
 
+    data = request.form.get('argument') # this was taken from the HTML form
 
-    return jsonify({'message': "message"})
+    if not data:
+        data = request.args.get("argument")  # fallback to query parameter if form data is not present
+
+    return jsonify({'message': f'You entered: {data}'})
+
 
 if __name__ == '__main__':
     app.run(debug=True)
