@@ -29,8 +29,13 @@ def add_resume():
     return json_resume
 
 
-
-
+@app.route('/get_resume', methods=['GET'])
+def get_list():
+    candidates = list(collection.find())
+    for c  in candidates:
+        c["_id"] = str(c["_id"])
+    
+    return render_template('list_candidate.html', applicants=candidates)
 
 
 

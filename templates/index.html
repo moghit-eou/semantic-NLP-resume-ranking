@@ -7,8 +7,11 @@
 
 <form action = "{{ url_for('add_resume') }}" method="POST">
     <textarea name ="argument" rows="4" cols="50" placeholder="Enter your text here..."></textarea>
-
     <button type="submit">SUBMIT</button>
+</form>
+
+<form action = "{{ url_for('get_list') }}" method="GET">
+    <button type="submit">LIST</button>
 </form>
 
 </body>
