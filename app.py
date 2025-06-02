@@ -25,7 +25,6 @@ def add_resume():
         data = request.args.get("argument")  # fallback to query parameter if form data is not present
     resume  = resume_text_to_json(data)
     resume['score'] = get_score(resume) 
-    resume['link'] = "https://example.com/resume.pdf"  
 
     result = collection.insert_one(resume)
     resume["_id"] = str(result.inserted_id)  # Convert ObjectId to string for JSON serialization
