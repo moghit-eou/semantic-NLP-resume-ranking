@@ -48,3 +48,30 @@ def get_score(json_resume):
 
     overall_score = sum(scores.values()) / len(scores)
     return overall_score
+
+def get_score_1(json_resume):
+    sections = ['professional_summary', 'work_experience', 'education', 'skills', 'others']
+    weights = {
+        "professional_summary": 0.2,
+        "work_experience": 0.4,
+        "education": 0.1,
+        "skills": 0.2,
+        "others": 0.1
+    }
+    scores = {}
+
+    weighted_sum = 0
+    total_weight = 0
+
+    for section in sections:
+        candidate_text = json_resume[section]
+        job_text = job_description[section]
+        score = cosine_similarity(candidate_text, job_text)
+        scores[section] = score
+
+        weight = weights.get(section, 0)
+        weighted_sum += score * weight
+        total_weight += weight
+
+    overall_score = weighted_sum / total_weight if total_weight != 0 else 0
+    return overall_score
