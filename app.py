@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify , render_template
 import json 
 from pymongo import MongoClient
-from scoring import resume_text_to_json , get_score
+from scoring import resume_text_to_json , get_score 
 
 client = MongoClient("mongodb://localhost:27017/")
 db = client["pfe_db"]

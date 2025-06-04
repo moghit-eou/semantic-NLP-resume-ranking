@@ -37,24 +37,14 @@ def cosine_similarity(first_text, second_text):
 
     return dot_product / (norm_vec1 * norm_vec2)
 
+
+
 def get_score(json_resume):
     sections = ['professional_summary', 'work_experience', 'education', 'skills', 'others']
-    scores = {}
-
-    for section in sections:
-        candidate_text = json_resume[section]
-        job_text = job_description[section]
-        scores[section] = cosine_similarity(candidate_text, job_text)
-
-    overall_score = sum(scores.values()) / len(scores)
-    return overall_score
-
-def get_score_1(json_resume):
-    sections = ['professional_summary', 'work_experience', 'education', 'skills', 'others']
     weights = {
-        "professional_summary": 0.2,
-        "work_experience": 0.4,
-        "education": 0.1,
+        "professional_summary": 0.1,
+        "work_experience": 0.3,
+        "education": 0.3,
         "skills": 0.2,
         "others": 0.1
     }
