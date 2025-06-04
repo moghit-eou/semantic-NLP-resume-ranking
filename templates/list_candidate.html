@@ -6,8 +6,16 @@
 <ul>
   
   {% for candidate in applicants %}
-    <li>{{ candidate["contact_information"]["name"]  }} 
-      ,score = {{ (candidate["scoring"]["overall_score"] * 100 )|round(2)  }}.
+    <li>{{ candidate["contact_information"]["name"]  }}<br>
+
+      {%set  work_score = candidate["scoring"]["work_experience_score"]  %}
+      {%set  skills_score = candidate["scoring"]["skills_score"]  %}
+      {%set over_all_score = candidate["scoring"]["overall_score"]  %}
+
+      work experience score: {{ (work_score * 100 )|round(2) }} <br>
+      skills score: {{ (skills_score * 100)|round(2) }} <br>
+      overall score: {{ (over_all_score * 100)|round(2) }} <br>
+
       
       <a href="{{ candidate["link"]  }}"  target = "_blank">resumee</a>
       </li>

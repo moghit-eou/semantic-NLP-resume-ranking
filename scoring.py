@@ -44,8 +44,8 @@ def get_score(json_resume):
     weights = {
         "professional_summary": 0.1,
         "work_experience": 0.3,
-        "education": 0.3,
-        "skills": 0.2,
+        "education": 0.2,
+        "skills": 0.3,
         "others": 0.1
     }
     scores = {}
