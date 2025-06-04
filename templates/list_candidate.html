@@ -7,7 +7,7 @@
   
   {% for candidate in applicants %}
     <li>{{ candidate["contact_information"]["name"]  }} 
-      ,score = {{ (candidate["score"] * 100 )|round(2)  }}.
+      ,score = {{ (candidate["scoring"]["overall_score"] * 100 )|round(2)  }}.
       
       <a href="{{ candidate["link"]  }}"  target = "_blank">resumee</a>
       </li>

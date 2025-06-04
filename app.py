@@ -19,15 +19,20 @@ def hello():
 @app.route('/add_resume' , methods=['POST' , 'GET'])
 def add_resume():
 
-    data = request.form.get('argument') # this was taken from the HTML form
+    data = request.form.get('argument') # take data from html form
 
     if not data:
-        data = request.args.get("argument")  # fallback to query parameter if form data is not present
+        data = request.args.get("argument")  # passing data from the URL query string for n8n integration
     resume  = resume_text_to_json(data)
-    resume['score'] = get_score(resume) 
+    work_experience_score , skills_score , overall_score = get_score(resume) 
+    resume.setdefault("scoring", {})  # creates scoring dict if not present
+    resume['scoring']['work_experience_score'] = work_experience_score
+    resume['scoring']['skills_score'] = skills_score
+    resume['scoring']['overall_score'] = overall_score
 
     result = collection.insert_one(resume)
-    resume["_id"] = str(result.inserted_id)  # Convert ObjectId to string for JSON serialization
+    resume["_id"] = str(result.inserted_id)  
+
     return resume
 
 
@@ -37,11 +42,12 @@ def get_list():
     n = len (candidates)
     for i in range(n):
         for j in range(i-1):
-            score_1 = candidates[i]['score']
-            score_2 = candidates[j]['score']
+            score_1 = candidates[i]['scoring']['overall_score']
+            score_2 = candidates[j]['scoring']['overall_score']
 
             if score_1 > score_2:
                 candidates[i], candidates[j] = candidates[j], candidates[i]
+            
     return render_template('list_candidate.html', applicants=candidates)
 
 if __name__ == '__main__':

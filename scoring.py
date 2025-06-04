@@ -64,6 +64,4 @@ def get_score(json_resume):
         total_weight += weight
 
     overall_score = weighted_sum / total_weight if total_weight != 0 else 0
-    return overall_score
-
-
+    return scores["work_experience"] , scores["skills"] , overall_score
