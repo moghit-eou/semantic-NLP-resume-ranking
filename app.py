@@ -1,5 +1,5 @@
-from flask import Flask, request, jsonify , render_template
-import json 
+from flask import Flask, request,  render_template , redirect , url_for
+from bson.objectid import ObjectId
 from pymongo import MongoClient
 from scoring import resume_text_to_json , get_score 
 
@@ -10,6 +10,7 @@ collection = db["students"]
 
 
 app = Flask(__name__)
+
 @app.route('/')
 def hello():
     return render_template('index.html')
@@ -33,7 +34,7 @@ def add_resume():
     result = collection.insert_one(resume)
     resume["_id"] = str(result.inserted_id)  
 
-    return resume
+    return resume #returning json for testing purposes
 
 
 @app.route('/get_resume', methods=['GET'])
@@ -44,11 +45,32 @@ def get_list():
         for j in range(i-1):
             score_1 = candidates[i]['scoring']['overall_score']
             score_2 = candidates[j]['scoring']['overall_score']
-
             if score_1 > score_2:
                 candidates[i], candidates[j] = candidates[j], candidates[i]
-            
+
     return render_template('list_candidate.html', applicants=candidates)
+
+
+
+@app.route('/delete_resume', methods=['POST'])
+def delete_resume():
+    resume_id = request.form.get('_id')
+    if not resume_id:
+        return redirect('/get_resume')
+
+    try:
+        obj_id = ObjectId(resume_id)
+    except Exception:
+        return redirect('/get_resume')
+
+    collection.delete_one({"_id": obj_id})
+    return redirect('/get_resume')
+
+
+@app.route('/delete_all', methods=['GET '])
+def delete_all_resumes():
+    collection.delete_many({})
+    return redirect('/get_resume')
 
 if __name__ == '__main__':
     app.run(debug=True , host="0.0.0.0", port=5000)

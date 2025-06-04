@@ -11,13 +11,19 @@
       {%set  work_score = candidate["scoring"]["work_experience_score"]  %}
       {%set  skills_score = candidate["scoring"]["skills_score"]  %}
       {%set over_all_score = candidate["scoring"]["overall_score"]  %}
+      {%set description = candidate["description"]  %}
 
+      description: {{ description }} <br>
       work experience score: {{ (work_score * 100 )|round(2) }} <br>
       skills score: {{ (skills_score * 100)|round(2) }} <br>
       overall score: {{ (over_all_score * 100)|round(2) }} <br>
 
-      
-      <a href="{{ candidate["link"]  }}"  target = "_blank">resumee</a>
+      <form method="POST"  action = "{{ url_for('delete_resume') }}">
+        <input type="hidden" name="_id" value="{{ candidate['_id'] }}">
+        <input type="submit" value="Delete">
+      </form>
+
+      <a href="{{ candidate["link"]  }}"  target = "_blank">View resume</a>
       </li>
   {% endfor %}
 
