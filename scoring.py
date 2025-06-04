@@ -65,3 +65,5 @@ def get_score(json_resume):
 
     overall_score = weighted_sum / total_weight if total_weight != 0 else 0
     return overall_score
+
+

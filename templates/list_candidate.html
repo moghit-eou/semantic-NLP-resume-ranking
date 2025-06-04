@@ -4,9 +4,15 @@
 <body>
 <h1>Job Applicants</h1>
 <ul>
+  
   {% for candidate in applicants %}
-   # <li>{{ candidate["_id"] }}</li>
+    <li>{{ candidate["contact_information"]["name"]  }} 
+      ,score = {{ (candidate["score"] * 100 )|round(2)  }}.
+      
+      <a href="{{ candidate["link"]  }}"  target = "_blank">resumee</a>
+      </li>
   {% endfor %}
+
 </ul>
 </body>
 </html>

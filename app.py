@@ -34,9 +34,14 @@ def add_resume():
 @app.route('/get_resume', methods=['GET'])
 def get_list():
     candidates = list(collection.find())
-    for c  in candidates:
-        c["_id"] = str(c["_id"])
-    
+    n = len (candidates)
+    for i in range(n):
+        for j in range(i-1):
+            score_1 = candidates[i]['score']
+            score_2 = candidates[j]['score']
+
+            if score_1 > score_2:
+                candidates[i], candidates[j] = candidates[j], candidates[i]
     return render_template('list_candidate.html', applicants=candidates)
 
 if __name__ == '__main__':
