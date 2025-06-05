@@ -80,5 +80,11 @@ def delete_all_resumes():
     collection.delete_many({})
     return redirect('/get_resume')
 
+
+
+@app.route("/check")
+def check():  # this is only for deployment health check
+    return "OK", 200
+
 if __name__ == '__main__':
     app.run()
