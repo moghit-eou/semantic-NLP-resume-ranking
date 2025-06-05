@@ -76,4 +76,4 @@ def delete_all_resumes():
     return redirect('/get_resume')
 
 if __name__ == '__main__':
-    app.run(debug=True , host="0.0.0.0", port=5000)
+    app.run()
