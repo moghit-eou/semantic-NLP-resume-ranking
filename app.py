@@ -2,10 +2,13 @@ from flask import Flask, request,  render_template , redirect , url_for
 from bson.objectid import ObjectId
 from pymongo import MongoClient
 from scoring import resume_text_to_json , get_score 
-
-client = MongoClient("mongodb://localhost:27017/")
+from dotenv import load_dotenv
+import os
+load_dotenv()
+uri = os.getenv("MONGODB_URI")
+client = MongoClient(uri)
 db = client["pfe_db"]
-collection = db["students"]
+collection = db["candidates"]
 
 
 
