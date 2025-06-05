@@ -4,8 +4,12 @@ from pymongo import MongoClient
 from scoring import resume_text_to_json , get_score 
 from dotenv import load_dotenv
 import os
+import logging
 load_dotenv()
 uri = os.getenv("MONGODB_URI")
+if not uri:
+    raise RuntimeError("MONGODB_URI is not set!")
+
 client = MongoClient(uri)
 db = client["pfe_db"]
 collection = db["candidates"]
@@ -16,6 +20,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
+    logging.info("Serving welcome page")
     return render_template('welcome.html')
 
 
