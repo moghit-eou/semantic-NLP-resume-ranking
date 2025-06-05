@@ -1,33 +1,88 @@
 <!DOCTYPE html>
-<html>
-<head><title>Candidate List</title></head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Candidate List - Candidate Insights</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='list_candidate.css') }}" />
+</head>
 <body>
-<h1>Job Applicants</h1>
-<ul>
-  
-  {% for candidate in applicants %}
-    <li>{{ candidate["contact_information"]["name"]  }}<br>
+  <!-- Full‐screen particle background -->
+  <canvas id="canvas"></canvas>
 
-      {%set  work_score = candidate["scoring"]["work_experience_score"]  %}
-      {%set  skills_score = candidate["scoring"]["skills_score"]  %}
-      {%set over_all_score = candidate["scoring"]["overall_score"]  %}
-      {%set description = candidate["description"]  %}
+  <!-- Main content container -->
+  <div class="content">
+    <div class="header-container">
+      <h1 class="page-title">🏆 Job Applicants</h1>
+      <p class="subtitle">Top candidates ranked by AI-powered evaluation</p>
+    </div>
 
-      description: {{ description }} <br>
-      work experience score: {{ (work_score * 100 )|round(2) }} <br>
-      skills score: {{ (skills_score * 100)|round(2) }} <br>
-      overall score: {{ (over_all_score * 100)|round(2) }} <br>
+    <div class="candidates-container">
+      {% for candidate in applicants %}
+        <div class="candidate-card">
+          <div class="candidate-header">
+            <h2 class="candidate-name">{{ candidate["contact_information"]["name"] }}</h2>
+            <div class="overall-score">
+              {% set over_all_score = candidate["scoring"]["overall_score"] %}
+              <span class="score-label">Overall Score</span>
+              <span class="score-value">{{ (over_all_score * 100)|round(2) }}%</span>
+            </div>
+          </div>
 
-      <form method="POST"  action = "{{ url_for('delete_resume') }}">
-        <input type="hidden" name="_id" value="{{ candidate['_id'] }}">
-        <input type="submit" value="Delete">
-      </form>
+          <div class="candidate-body">
+            {% set work_score = candidate["scoring"]["work_experience_score"] %}
+            {% set skills_score = candidate["scoring"]["skills_score"] %}
+            {% set description = candidate["description"] %}
 
-      <a href="{{ candidate["link"]  }}"  target = "_blank">View resume</a>
-      </li>
-  {% endfor %}
+            <div class="description-section">
+              <p class="description-text">{{ description }}</p>
+            </div>
 
-</ul>
+            <div class="scores-grid">
+              <div class="score-item">
+                <span class="score-icon">💼</span>
+                <div class="score-details">
+                  <span class="score-label">Work Experience</span>
+                  <span class="score-value">{{ (work_score * 100)|round(2) }}%</span>
+                </div>
+              </div>
+              
+              <div class="score-item">
+                <span class="score-icon">🛠️</span>
+                <div class="score-details">
+                  <span class="score-label">Skills Match</span>
+                  <span class="score-value">{{ (skills_score * 100)|round(2) }}%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="candidate-actions">
+            <a href="{{ candidate['link'] }}" target="_blank" class="view-resume-btn">
+              📄 View Resume
+            </a>
+            
+            <form method="POST" action="{{ url_for('delete_resume') }}" class="delete-form">
+              <input type="hidden" name="_id" value="{{ candidate['_id'] }}">
+              <button type="submit" class="delete-btn" onclick="return confirm('Are you sure you want to delete this candidate?')">
+                🗑️ Delete
+              </button>
+            </form>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    {% if not applicants %}
+      <div class="empty-state">
+        <div class="empty-icon">📭</div>
+        <h2>No Candidates Found</h2>
+        <p>No applicants have been processed yet.</p>
+      </div>
+    {% endif %}
+  </div>
+
+  <script src="{{ url_for('static', filename='welcome.js') }}"></script>
 </body>
 </html>
-
