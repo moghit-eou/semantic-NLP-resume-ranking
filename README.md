@@ -1,23 +1,16 @@
 # <div align="center">**NLP Resume Evaluation**</div>
-<table>
-  <tr>
-    <td width="30%" align="center">
-      <p align="center">
-        <a href="#-key-features">Key Features</a> •
-        <a href="#technologies-used">Technologies Used</a> •
-        <a href="#-system-architecture">System Architecture</a> •
-        <a href="#-how-it-works">How It Works</a> •
-        <a href="#-installation">Installation</a> •
-        <a href="#-usage">Usage</a> •
-        <a href="#-license">License</a>
-      </p>
-    </td>
-    <td width="70%" align="center">
-      <img src="https://i.ibb.co/Kp4BQ4hn/image.png" alt="Python" width="200" style="border-radius: 20px;">
-    </td>
-  </tr>
-</table>
-
+<div align="center">
+    <img src="https://i.ibb.co/Kp4BQ4hn/image.png" alt="Python" width="300" style="border-radius: 20px;">
+</div>
+<p align="center">
+  <a href="#-key-features">Key Features</a> •
+  <a href="#technologies-used">Technologies Used</a> •
+  <a href="#-system-architecture">System Architecture</a> •
+  <a href="#-how-it-works">How It Works</a> •
+  <a href="#-installation">Installation</a> •
+  <a href="#-usage">Usage</a> •
+  <a href="#-license">License</a>
+</p>
 
 
 ---
