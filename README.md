@@ -1,6 +1,10 @@
 # <div align="center">**NLP Resume Evaluation**</div>
 ---
+
 <div align="center">
+
+
+## Overview
 
 
 Effortlessly automate your hiring workflow with this advanced NLP-powered system:
@@ -18,7 +22,6 @@ Effortlessly automate your hiring workflow with this advanced NLP-powered system
     <img src="https://i.ibb.co/5wcQ01H/image.png" alt="Python" width="700" style="border-radius: 20px;">
 </div>
 
-## 🛠️ Minimal Tech Stack Overview
 
 - **Python**: Main programming language for backend logic and data processing.
 - **Flask**: Lightweight web framework for serving APIs and visualizing results.
