@@ -50,7 +50,7 @@ Effortlessly automate your hiring workflow with this advanced NLP-powered system
 *   **n8n Workflow Orchestration**: The entire process is orchestrated through a powerful and flexible n8n workflow, connecting various services and APIs seamlessly.
 *   **NLP-Powered Analysis**: Uses a custom-deployed Word2Vec model to generate vector representations of text, enabling deep semantic understanding of resumes and job descriptions.
 *   **Web-Based Visualization**: A Flask-based web application displays the ranked list of candidates, making it easy for recruiters to identify the most suitable applicants.
-*   **Modular and Scalable**: The architecture is designed to be modular, allowing for easy integration of new models or services.
+
 
 ---
 
@@ -124,11 +124,27 @@ $$
 
 ### 4. Data Storage and Visualization
 
-1.  **Storage**: The structured CV, along with its detailed and final scores, is saved as a document in a MongoDB database.
+1.  **Storage & Scoring**: The structured CV, along with its detailed and final scores, is saved as a document in a MongoDB database.
+<details>
+  <summary>📄 MongoDB Document (JSON Resume)</summary>
+  <p align="center">
+    <img src="https://i.ibb.co/JRktny9P/image.png" alt="MongoDB Resume Document" width="600">
+    <br>
+    <em>Example of a stored resume document in MongoDB.</em>
+  </p>
+</details>
+
+<p align="center">
+  <img src="https://i.ibb.co/dsg1dV8r/image.png" alt="Resume received via email" width="500">
+  <br>
+  <em>Example: A resume received as an email attachment ready for processing.</em>
+</p>
+
+
 2.  **Display**: A user can navigate to the Flask application's `/get_resume` endpoint, which retrieves all candidates from MongoDB, sorts them by their final score in descending order, and displays them on a clean, user-friendly web page.
 
 <p align="center">
-  <img src="https://i.imgur.com/L4e9o2f.png" alt="Candidate Leaderboard" width="700">
+  <img src="https://i.ibb.co/dyRJQvb/image.png" alt="Candidate Leaderboard" width="700">
   <br>
   <em>Final web application showing ranked candidates.</em>
 </p>
@@ -176,18 +192,9 @@ To set up this project locally, you will need Python, Docker, and access to an n
 1.  **Deploy the Models**: Ensure your classification and vectorization models are deployed (e.g., on Hugging Face Spaces) and that the API endpoints are accessible.
 2.  **Configure n8n**: Import the workflow JSON file into your n8n instance. Update the `HTTP Request` nodes with your deployed model URLs and the Flask application's endpoint.
 3.  **Start the Process**: Send an email with a CV attached to the monitored Gmail account.
-4.  **View Results**: Open your browser and navigate to `http://localhost:5000/get_resume` to see the ranked list of candidates.
+4.  **View Results**: Open your browser and navigate to `URL/get_resume` to see the ranked list of candidates.
 
----
 
-## 🙏 Acknowledgements
-
-This project was submitted in partial fulfillment of the requirements for the Bachelor's Degree in Data Science and Decision Informatics at the Faculty of Sciences and Techniques of Mohammedia.
-
-*   **Project Supervisor**: Prof. Asmaa ABASSI
-*   A special thanks to the entire jury and everyone who provided support and guidance throughout this project.
-
----
 
 ## 📄 License
 
@@ -199,7 +206,7 @@ This project is licensed under the **MIT License**. You are free to use, modify,
 
 <div align="center">
   <h3>⭐ If you found this project useful, please give it a star!</h3>
-  <a href="https://github.com/your-username/your-repo-name">
+  <a href="https://github.com/moghit-eou/semantic-NLP-resume-ranking">
     <img src="https://img.shields.io/github/stars/your-username/your-repo-name?style=social" alt="GitHub stars">
   </a>
 </div>
