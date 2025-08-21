@@ -31,16 +31,16 @@ Effortlessly automate your hiring workflow with this advanced NLP-powered system
 - **Docker**: Containerization for easy deployment and reproducibility.
 - **Gmail API**: For automated email retrieval and monitoring.
 
-
 <p align="center">
   <a href="#-key-features">Key Features</a> •
-  <a href="#-technologies-used">Technologies</a> •
-  <a href="#-system-architecture">Architecture</a> •
+  <a href="#-technologies-used">Technologies Used</a> •
+  <a href="#-system-architecture">System Architecture</a> •
   <a href="#-how-it-works">How It Works</a> •
   <a href="#-installation">Installation</a> •
   <a href="#-usage">Usage</a> •
-  <a href="#-acknowledgements">Acknowledgements</a>
+  <a href="#-license">License</a>
 </p>
+
 
 
 
