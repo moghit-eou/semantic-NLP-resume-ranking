@@ -98,7 +98,7 @@ Integrates a deployed Word2Vec API to generate embeddings for CV sections and jo
 The relevance of a candidate is determined by comparing their CV to the job description.
 1.  **Similarity Calculation**: The system calculates the **cosine similarity** between the vector of each CV section and the corresponding section of the job description. This measures the semantic similarity, not just keyword matching.
 <p align="center">
-  <img src="https://i.ibb.co/wqtg3Vw/image.png" alt="Cosine Similarity" width="350">
+  <img src="https://i.ibb.co/wqtg3Vw/image.png" alt="Cosine Similarity" width="500">
   <br>
 </p>
 For each section *i*, the cosine similarity is computed as:
