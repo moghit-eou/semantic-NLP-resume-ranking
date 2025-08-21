@@ -1,20 +1,19 @@
-# <div align="center">**NLP Resume Evaluation**</div>
+# <div align="center">**Resume Evaluation using Natural Language Processing (NLP)**</div>
 <div align="center">
     <img src="https://i.ibb.co/Kp4BQ4hn/image.png" alt="Python" width="300" style="border-radius: 20px;">
 </div>
 <p align="center">
-  <a href="#-key-features">Key Features</a> •
+  <a href="#live-demo">Live Demo</a> •
+  <a href="#key-features">Key Features</a> •
   <a href="#technologies-used">Technologies Used</a> •
-  <a href="#-system-architecture">System Architecture</a> •
-  <a href="#-how-it-works">How It Works</a> •
-  <a href="#-installation">Installation</a> •
+  <a href="#system-architecture">System Architecture</a> •
+  <a href="#how-it-works">How It Works</a> •
+  <a href="#installation">Installation</a> •
   <a href="#-usage">Usage</a> •
   <a href="#-license">License</a>
 </p>
 
-
 ---
-
 <div align="center">
 
 
@@ -31,6 +30,15 @@ Effortlessly automate your hiring workflow with this advanced NLP-powered system
 
 
 ---
+
+## Live Demo
+
+Deployed on **Hugging Face Spaces**:  
+**https://huggingface.co/spaces/moghit/resume-evaluation**
+
+> _Note: the Space may need a little time to start if it’s been sleeping._
+
+<a id="technologies-used"></a>
 ## <div align="center">Technologies Used</div>
 <div align="center">
     <img src="https://i.ibb.co/5wcQ01H/image.png" alt="Python" width="700" style="border-radius: 20px;">
@@ -54,7 +62,7 @@ Effortlessly automate your hiring workflow with this advanced NLP-powered system
 
 ---
 
-##  Key Features
+## Key Features
 
 *   **Automated Email Classification**: Automatically classifies incoming emails into three categories: `High Priority`, `Low Priority`, and `Job Application` using a supervised machine learning model.
 *   **CV Scoring System**: Extracts resumes from `Job Application` emails, analyzes their content, and scores them against a given job description using cosine similarity.
@@ -78,6 +86,7 @@ The system is composed of two main parts: an **n8n workflow** for process automa
 The workflow is triggered by a new email, classifies it, and if it's a job application, calls the Flask API to score the resume and stores the result in MongoDB. The frontend then fetches the ranked list of candidates.
 
 ---
+<a id="how-it-works"></a>
 
 ## ⚙️ How It Works
 
@@ -161,6 +170,7 @@ $$
 </p>
 
 ---
+<a id="installation"></a>
 
 ##  Installation
 
