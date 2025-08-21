@@ -1,6 +1,6 @@
 # <div align="center">**Resume Evaluation using Natural Language Processing (NLP)**</div>
 <div align="center">
-    <img src="https://i.ibb.co/Kp4BQ4hn/image.png" alt="Python" width="300" style="border-radius: 20px;">
+    <img src="https://i.ibb.co/Kp4BQ4hn/image.png" alt="Python" width="300" style="border-radius: 50px;">
 </div>
 <p align="center">
   <a href="#live-demo">Live Demo</a> •
