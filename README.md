@@ -178,8 +178,8 @@ To set up this project locally, you will need Python, Docker, and access to an n
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/your-username/your-repo-name.git
-    cd your-repo-name
+    git clone hhttps://github.com/moghit-eou/semantic-NLP-resume-ranking
+    cd semantic-NLP-resume-ranking
     ```
 
 2.  **Set up the Python environment:**
