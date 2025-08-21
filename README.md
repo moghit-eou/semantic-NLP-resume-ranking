@@ -1,4 +1,7 @@
 # <div align="center">**NLP Resume Evaluation**</div>
+<div align="center">
+    <img src="https://i.ibb.co/Kp4BQ4hn/image.png" alt="Python" width="300" style="border-radius: 20px;">
+</div>
 <p align="center">
   <a href="#-key-features">Key Features</a> •
   <a href="#technologies-used">Technologies Used</a> •
