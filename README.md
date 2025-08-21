@@ -1,4 +1,15 @@
 # <div align="center">**NLP Resume Evaluation**</div>
+<p align="center">
+  <a href="#-key-features">Key Features</a> •
+  <a href="#technologies-used">Technologies Used</a> •
+  <a href="#-system-architecture">System Architecture</a> •
+  <a href="#-how-it-works">How It Works</a> •
+  <a href="#-installation">Installation</a> •
+  <a href="#-usage">Usage</a> •
+  <a href="#-license">License</a>
+</p>
+
+
 ---
 
 <div align="center">
@@ -6,6 +17,7 @@
 
 ## Overview
 
+</div>
 
 Effortlessly automate your hiring workflow with this advanced NLP-powered system:
 
@@ -14,7 +26,6 @@ Effortlessly automate your hiring workflow with this advanced NLP-powered system
 - **Smart Scoring & Ranking:** Calculates similarity scores and ranks applicants for optimal selection.
 - **Interactive Visualization:** Explore results in a modern Flask web app, seamlessly orchestrated via n8n workflows.
 
-</div>
 
 ---
 ## <div align="center">Technologies Used</div>
@@ -30,23 +41,17 @@ Effortlessly automate your hiring workflow with this advanced NLP-powered system
 - **Word2Vec**: Custom-trained model for generating text embeddings.
 - **Docker**: Containerization for easy deployment and reproducibility.
 - **Gmail API**: For automated email retrieval and monitoring.
+- **AWS EC2**: Cloud infrastructure used to host and run the entire n8n workflow.  
 
-<p align="center">
-  <a href="#-key-features">Key Features</a> •
-  <a href="#-technologies-used">Technologies Used</a> •
-  <a href="#-system-architecture">System Architecture</a> •
-  <a href="#-how-it-works">How It Works</a> •
-  <a href="#-installation">Installation</a> •
-  <a href="#-usage">Usage</a> •
-  <a href="#-license">License</a>
-</p>
+
+
 
 
 
 
 ---
 
-## 🎯 Key Features
+##  Key Features
 
 *   **Automated Email Classification**: Automatically classifies incoming emails into three categories: `High Priority`, `Low Priority`, and `Job Application` using a supervised machine learning model.
 *   **CV Scoring System**: Extracts resumes from `Job Application` emails, analyzes their content, and scores them against a given job description using cosine similarity.
@@ -154,7 +159,7 @@ $$
 
 ---
 
-## 🚀 Installation
+##  Installation
 
 To set up this project locally, you will need Python, Docker, and access to an n8n instance.
 
@@ -185,7 +190,7 @@ To set up this project locally, you will need Python, Docker, and access to an n
 
     # To build and run with Docker
     docker build -t resume-scorer .
-    docker run -p 5000:5000 resume-scorer
+    docker run -p 7860:7860 resume-scorer
     ```
 
 ---
