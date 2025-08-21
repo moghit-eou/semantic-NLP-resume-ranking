@@ -70,8 +70,9 @@ The workflow is triggered by a new email, classifies it, and if it's a job appli
 
 ## ⚙️ How It Works
 
-The core of this project is the automated CV evaluation process, detailed in **Chapter 6** of the project report. Here’s a step-by-step breakdown:
-
+The core of this project is the automated CV evaluation process, detailed in **Chapter 6** of the project report.
+Refer to Chapter 6 in the project report [here](https://drive.google.com/file/d/1zczUyl51G2qE0vfhcx6JZmcey4K1zOU3/view?usp=sharing).
+Here’s a step-by-step breakdown:
 ### 1. Email Classification and CV Extraction
 
 The n8n workflow begins when a new email arrives.
@@ -88,22 +89,36 @@ For job applications, the system performs the following steps:
 
 3.  **Vectorization**: Each section of the CV and the job description is sent to a deployed API endpoint, which uses a custom Word2Vec model to return a 100-dimension numerical vector.
 
+**Word2Vec Embedding API Integration**
+
+Integrates a deployed Word2Vec API to generate embeddings for CV sections and job descriptions, enabling similarity calculation and scoring.([GitHub link](https://github.com/moghit-eou/Text-Classification-TF-IDF-Word2Vec-Embeddings)).
+
 ### 3. Cosine Similarity and Scoring
 
 The relevance of a candidate is determined by comparing their CV to the job description.
 1.  **Similarity Calculation**: The system calculates the **cosine similarity** between the vector of each CV section and the corresponding section of the job description. This measures the semantic similarity, not just keyword matching.
 <p align="center">
-  <img src="https://i.imgur.com/bW7tV8k.png" alt="Cosine Similarity" width="500">
+  <img src="https://i.ibb.co/wqtg3Vw/image.png" alt="Cosine Similarity" width="350">
   <br>
-  <em>Cosine similarity measures the angle between two vectors.</em>
 </p>
+For each section *i*, the cosine similarity is computed as:
+
+$$
+s_i = \cos(\theta) = \frac{v_i^{CV} \cdot v_i^{job}}{\|v_i^{CV}\| \times \|v_i^{job}\|}
+$$
+
+
+This measures the similarity between a CV section and the corresponding job description section.
+
 
 2.  **Weighted Scoring**: Each section's similarity score is multiplied by a predefined weight (e.g., `work_experience` and `skills` are weighted higher).
-<p align="center">
-  <img src="https://i.imgur.com/t8fG3pS.png" alt="Section Weights" width="400">
-  <br>
-  <em>Empirically determined weights for each section.</em>
-</p>
+ The overall CV score is the weighted average of the section scores:
+
+$$
+S_{CV} = \frac{\sum_i w_i \times s_i}{\sum_i w_i}
+$$
+
+
 
 3.  **Final Score**: The weighted scores are summed up to produce a final, global score for the candidate.
 
