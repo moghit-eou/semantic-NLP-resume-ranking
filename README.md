@@ -106,12 +106,11 @@ The n8n workflow begins when a new email arrives.
 For job applications, the system performs the following steps:
 1.  **File Extraction**: The attached CV (PDF) is extracted and its raw text is obtained using the `Extract from File` node.
 2.  **AI-Powered Sectioning**: An `AI Agent` (using a Large Language Model) structures the raw text into standardized JSON sections: `professional_summary`, `work_experience`, `education`, `skills`, and `others`.
+3. **Vectorization**
+   - Each section of the CV and the job description is sent to a **Word2Vec Embedding API** that I deployed in another project **([GitHub link](https://github.com/moghit-eou/Text-Classification-TF-IDF-Word2Vec-Embeddings))**.  
+   - The API returns 100-dimension numerical vectors, which are then used for similarity calculation and scoring.  
 
-3.  **Vectorization**: Each section of the CV and the job description is sent to a deployed API endpoint, which uses a custom Word2Vec model to return a 100-dimension numerical vector.
 
-**Word2Vec Embedding API Integration**
-
-Integrates a deployed Word2Vec API to generate embeddings for CV sections and job descriptions, enabling similarity calculation and scoring.([GitHub link](https://github.com/moghit-eou/Text-Classification-TF-IDF-Word2Vec-Embeddings)).
 
 ### 3. Cosine Similarity and Scoring
 
